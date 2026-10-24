@@ -1,0 +1,95 @@
+const https = require('https');
+
+exports.handler = async (event) => {
+  // Only accept POST requests
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      body: JSON.stringify({ error: 'Method not allowed' })
+    };
+  }
+
+  try {
+    const body = JSON.parse(event.body);
+
+    // Extract form data
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      eventDate,
+      eventTime,
+      eventType,
+      county,
+      setup,
+      guestCount,
+      notes
+    } = body;
+
+    // Build appointment request for Square
+    const appointmentData = {
+      locationId: 'YOUR_LOCATION_ID',
+      customerId: null,
+      customerNote: `Event Type: ${eventType}\nCounty: ${county}\nSetup: ${setup}\nGuests: ${guestCount}\nNotes: ${notes}`,
+      startAt: `${eventDate}T${convertTimeToISO(eventTime)}`,
+      durationMinutes: 180, // Default to 3 hours; will vary by package
+      serviceVariationId: 'YOUR_SERVICE_VARIATION_ID'
+    };
+
+    // Make request to Square Bookings API
+    const options = {
+      hostname: 'connect.squareup.com',
+      path: '/v2/bookings',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.SQUARE_ACCESS_TOKEN}`,
+        'Square-Version': '2024-12-18'
+      }
+    };
+
+    const response = await makeRequest(options, JSON.stringify(appointmentData));
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ success: true, booking: response })
+    };
+  } catch (error) {
+    console.error('Error creating booking:', error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: error.message })
+    };
+  }
+};
+
+// Helper function to make HTTPS request
+function makeRequest(options, data) {
+  return new Promise((resolve, reject) => {
+    const req = https.request(options, (res) => {
+      let body = '';
+      res.on('data', chunk => body += chunk);
+      res.on('end', () => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          resolve(JSON.parse(body));
+        } else {
+          reject(new Error(`API error: ${res.statusCode} ${body}`));
+        }
+      });
+    });
+    req.on('error', reject);
+    req.write(data);
+    req.end();
+  });
+}
+
+// Helper to convert 12-hour time to ISO format
+function convertTimeToISO(time) {
+  const [timePart, period] = time.split(' ');
+  let [hours, minutes] = timePart.split(':');
+  hours = parseInt(hours);
+  if (period === 'PM' && hours !== 12) hours += 12;
+  if (period === 'AM' && hours === 12) hours = 0;
+  return `${String(hours).padStart(2, '0')}:${minutes}:00`;
+}

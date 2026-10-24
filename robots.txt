@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.mobilestrokesgolf.com/sitemap.xml
+
+# Block access to any future admin or private directories
+Disallow: /admin/
+Disallow: /private/

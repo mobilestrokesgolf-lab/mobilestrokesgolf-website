@@ -1,0 +1,16 @@
+# Exclude large media and non-web files from Netlify deploys
+*.MOV
+*.mov
+*.mp4
+*.MP4
+*.mp3
+*.MP3
+*.wav
+*.avi
+*.mkv
+
+# Python scripts
+*.py
+
+# Misc
+Downie Clips/

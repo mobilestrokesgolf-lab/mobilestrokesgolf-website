@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:unsplash.com)",
+      "WebFetch(domain:www.pexels.com)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(git --version)",
+      "Bash(markitdown \"C:\\\\Users\\\\Mobile Strokes\\\\Downloads\\\\Mobile_Strokes_Golf_Cost_Tracker.xlsx\")",
+      "PowerShell(python -c \"import pandas as pd; xl = pd.ExcelFile\\('C:/Users/Mobile Strokes/Downloads/Mobile_Strokes_Golf_Cost_Tracker.xlsx'\\); print\\(xl.sheet_names\\)\")",
+      "Read(//c/Users/Mobile Strokes/AppData/Local/Claude-Data/claude_pzs8sxrjxfjjc/local-agent-mode-sessions/skills-plugin/49f67b0d-1ecf-4afa-85a7-7c07376e609e/b72e42b5-d074-4185-832b-a85c25b71553/skills/xlsx/**)",
+      "Bash(pip install *)",
+      "PowerShell(winget install Python.Python.3.12 --silent)",
+      "PowerShell($env:PATH = \"C:\\\\Users\\\\Mobile Strokes\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312;$env:PATH\"; pip install openpyxl -q; python \"C:\\\\Users\\\\Mobile Strokes\\\\Desktop\\\\Claude\\\\build_cfo.py\")",
+      "PowerShell(Get-Command netlify -ErrorAction SilentlyContinue)",
+      "PowerShell(npm list -g netlify-cli 2>&1)",
+      "PowerShell($nodePath = \\(Get-ChildItem \"C:\\\\Users\\\\Mobile Strokes\\\\AppData\\\\Local\\\\Programs\\\\nodejs\" -ErrorAction SilentlyContinue\\).FullName; if \\(!$nodePath\\) { $nodePath = \\(Get-ChildItem \"C:\\\\Program Files\\\\nodejs\" -ErrorAction SilentlyContinue\\).FullName }; Write-Host \"Node path: $nodePath\"; if \\($nodePath\\) { & \"$nodePath\\\\npm.cmd\" --version 2>&1 })",
+      "PowerShell(& \"C:\\\\Program Files\\\\nodejs\\\\npm.cmd\" --version 2>&1)",
+      "PowerShell(& \"C:\\\\Program Files\\\\nodejs\\\\npm.cmd\" list -g netlify-cli 2>&1)",
+      "PowerShell($env:PATH = \"C:\\\\Program Files\\\\nodejs;C:\\\\Users\\\\Mobile Strokes\\\\AppData\\\\Roaming\\\\npm;\" + $env:PATH; Set-Location \"C:\\\\Users\\\\Mobile Strokes\\\\Desktop\\\\Claude\"; netlify status 2>&1)",
+      "PowerShell($env:PATH = \"C:\\\\Program Files\\\\nodejs;C:\\\\Users\\\\Mobile Strokes\\\\AppData\\\\Roaming\\\\npm;\" + $env:PATH; Set-Location \"C:\\\\Users\\\\Mobile Strokes\\\\Desktop\\\\Claude\"; netlify deploy --prod 2>&1)",
+      "PowerShell($env:PATH = \"C:\\\\Program Files\\\\nodejs;C:\\\\Users\\\\Mobile Strokes\\\\AppData\\\\Roaming\\\\npm;\" + $env:PATH; Set-Location \"C:\\\\Users\\\\Mobile Strokes\\\\Desktop\\\\Claude\"; netlify deploy --prod --debug 2>&1 | Select-Object -Last 30)",
+      "PowerShell($env:PATH = \"C:\\\\Program Files\\\\nodejs;C:\\\\Users\\\\Mobile Strokes\\\\AppData\\\\Roaming\\\\npm;\" + $env:PATH; Set-Location \"C:\\\\Users\\\\Mobile Strokes\\\\Desktop\\\\Claude\"; netlify unlink 2>&1)",
+      "PowerShell($env:PATH = \"C:\\\\Program Files\\\\nodejs;C:\\\\Users\\\\Mobile Strokes\\\\AppData\\\\Roaming\\\\npm;\" + $env:PATH; Set-Location \"C:\\\\Users\\\\Mobile Strokes\\\\Desktop\\\\Claude\"; netlify link --id 3533ca0f-b9f2-46a7-a4e8-d132ce5d2a15 2>&1)",
+      "PowerShell($env:PATH = \"C:\\\\Program Files\\\\nodejs;C:\\\\Users\\\\Mobile Strokes\\\\AppData\\\\Roaming\\\\npm;\" + $env:PATH; Set-Location \"C:\\\\Users\\\\Mobile Strokes\\\\Desktop\\\\Claude\"; netlify deploy --prod --dir . 2>&1)",
+      "PowerShell($env:PATH = \"C:\\\\Program Files\\\\nodejs;C:\\\\Users\\\\Mobile Strokes\\\\AppData\\\\Roaming\\\\npm;\" + $env:PATH; netlify logout 2>&1)",
+      "PowerShell($env:PATH = \"C:\\\\Program Files\\\\nodejs;C:\\\\Users\\\\Mobile Strokes\\\\AppData\\\\Roaming\\\\npm;\" + $env:PATH; netlify login 2>&1)",
+      "PowerShell($configPath = \"$env:APPDATA\\\\netlify\\\\config.json\"; if \\(Test-Path $configPath\\) { $config = Get-Content $configPath | ConvertFrom-Json; $users = $config.users; $users | Get-Member -MemberType NoteProperty | Select-Object -First 1 -ExpandProperty Name })",
+      "PowerShell($configPath = \"$env:APPDATA\\\\netlify\\\\config.json\"; Get-Content $configPath 2>&1 | Select-Object -First 20)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.netlify\" -Recurse -ErrorAction SilentlyContinue | Select FullName; Get-ChildItem \"$env:APPDATA\\\\netlify\" -Recurse -ErrorAction SilentlyContinue | Select FullName)",
+      "PowerShell(Test-Path \"$env:TEMP\\\\msg_deploy.zip\"; if \\(Test-Path \"$env:TEMP\\\\msg_deploy.zip\"\\) { \\(Get-Item \"$env:TEMP\\\\msg_deploy.zip\"\\).Length })",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Mobile Strokes\\\\Desktop\\\\Claude\" -File | Sort-Object Length -Descending | Select-Object Name, @{N='Size_MB';E={[math]::Round\\($_.Length/1MB,2\\)}} | Select-Object -First 15)",
+      "Bash(curl -s -X POST https://api.netlify.com/api/v1/sites/3533ca0f-b9f2-46a7-a4e8-d132ce5d2a15/deploys -H 'Authorization: Bearer nfc_vZVJDLCFK4wjJbYsoe8v92g5c1vXEAnrb83b' -H 'Content-Type: application/zip' --data-binary @/c/Users/MOBILE~1/AppData/Local/Temp/msg_deploy_web.zip)",
+      "Bash(curl -s https://api.netlify.com/api/v1/sites/3533ca0f-b9f2-46a7-a4e8-d132ce5d2a15/deploys?per_page=3 -H 'Authorization: Bearer nfc_vZVJDLCFK4wjJbYsoe8v92g5c1vXEAnrb83b')",
+      "Bash(python3 -c ' *)",
+      "mcp__visualize__read_me",
+      "Bash(git -C \"C:\\\\Users\\\\Mobile Strokes\\\\Desktop\\\\Claude\" remote -v)",
+      "Bash(gh --version)"
+    ]
+  }
+}
